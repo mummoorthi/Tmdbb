@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="moorthy.example.com.tmdb.MoviewDetailPage">
+
+  <!--  <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="center_horizontal"
+        app:theme="@style/ToolBarStyle">
+    </android.support.v7.widget.Toolbar>-->
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/toolbarParent"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorPrimary"
+        >
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/backmovielist"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/back_movielist"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/toolbartitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:layout_marginStart="15dp"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/backmovielist"
+            />
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.v7.widget.AppCompatImageView
+        app:layout_constraintTop_toBottomOf="@id/toolbarParent"
+        android:id="@+id/moviewdetailImage"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        />
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/moviewdetailImage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/moviedetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        app:layout_constraintTop_toBottomOf="@id/scroll"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        />
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/minutes"
+        android:layout_width="0dp"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/date"
+        android:layout_height="wrap_content"
+app:layout_constraintTop_toBottomOf="@id/moviedetails"
+        android:text="142 minutes"
+        android:textColor="@android:color/black"
+
+        android:textSize="14sp"
+        android:layout_marginStart="20dp"
+        />
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/date"
+        android:layout_width="0dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintEnd_toStartOf="@id/review"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/minutes"
+        app:layout_constraintTop_toBottomOf="@id/moviedetails"
+        android:text="21st April 2018"
+        android:textSize="14sp"
+        android:textColor="@android:color/black"
+
+        />
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/review"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="9.3"
+        android:gravity="center"
+        android:layout_marginEnd="25dp"
+        android:textColor="@color/white"
+        app:layout_constraintHorizontal_weight="0.3"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/background_status"
+        app:layout_constraintStart_toEndOf="@id/date"
+        app:layout_constraintTop_toBottomOf="@id/moviedetails"
+        />
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/movieAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_weight="4"
+        app:layout_constraintTop_toBottomOf="@id/minutes"
+        app:layout_constraintEnd_toStartOf="@id/moiewStatus"
+        android:layout_marginTop="15dp"
+        android:text="Dramaa,Crime Fiction,Mystery"
+        android:layout_marginEnd="20dp"
+        android:textSize="14sp"
+        android:layout_marginStart="20dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/moiewStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="EN"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:background="@drawable/background_langage"
+        android:gravity="center"
+        android:layout_marginEnd="25dp"
+        app:layout_constraintHorizontal_weight="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/movieAddress"
+        app:layout_constraintTop_toBottomOf="@id/review"
+        android:layout_marginTop="20dp"
+        />
+    <android.support.constraint.ConstraintLayout
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/movieAddress"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content">
+
+<android.support.v7.widget.AppCompatTextView
+    android:layout_marginTop="15dp"
+    app:layout_constraintTop_toTopOf="parent"
+    android:id="@+id/budget"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Budget"
+    android:textColor="@android:color/black"
+    android:textSize="16sp"
+    android:layout_marginStart="10dp"
+    app:layout_constraintStart_toStartOf="parent"
+    />
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/doller"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$25 Miilion"
+            android:layout_marginStart="40dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/budget"
+            />
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="15dp"
+            android:id="@+id/revenue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Revenue"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_marginStart="10dp"
+            app:layout_constraintTop_toBottomOf="@id/budget"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_marginTop="15dp"
+            android:id="@+id/doller1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$58.3 Miilion"
+            android:layout_marginStart="40dp"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/doller"
+
+            app:layout_constraintStart_toEndOf="@id/budget"
+            />
+
+
+    </android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.constraint.ConstraintLayout>

@@ -18,8 +18,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import moorthy.example.com.tmdb.Model.MovieListResult;
-import moorthy.example.com.tmdb.PopularMovieScreen;
+import moorthy.example.com.tmdb.Common;
+import moorthy.example.com.tmdb.Interfaces.Movielist_interfaces;
+import moorthy.example.com.tmdb.Movielist.MovieListResult;
 import moorthy.example.com.tmdb.R;
 
 /**
@@ -30,12 +31,14 @@ public class PopularMovieListAdapter extends RecyclerView.Adapter<PopularMovieLi
 
     private Activity activity;
     private List<MovieListResult> data;
-    //private Interface_Adap objInterAdap;
+    private Movielist_interfaces movielistInterfaces;
 
 
-    public PopularMovieListAdapter(Activity popularMovieScreen, List<MovieListResult> movielist) {
+    public PopularMovieListAdapter(Activity popularMovieScreen, List<MovieListResult> movielist,Movielist_interfaces interfaces) {
         this.activity=popularMovieScreen;
         this.data=movielist;
+        this.movielistInterfaces=interfaces;
+
     }
 
     @NonNull
@@ -66,7 +69,7 @@ public class PopularMovieListAdapter extends RecyclerView.Adapter<PopularMovieLi
                 holder.movierating.setText(average);
             }
             if (data.get(position).getReleaseDate()!=null){
-                holder.moviedate.setText(convertDate(data.get(position).getReleaseDate()));
+                holder.moviedate.setText(Common.convertDate(data.get(position).getReleaseDate()));
             }
             if (data.get(position).getOriginalLanguage()!=null){
                 holder.moviestatus.setText(data.get(position).getOriginalLanguage());
@@ -80,7 +83,7 @@ public class PopularMovieListAdapter extends RecyclerView.Adapter<PopularMovieLi
         return data.size();
     }
 
-    public class MyviewHolder extends RecyclerView.ViewHolder {
+    public class MyviewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         AppCompatImageView movieimage;
         AppCompatTextView moviewtitle, moviedescriptions, movierating, moviedate, moviestatus;
         ConstraintLayout movieparent;
@@ -94,36 +97,21 @@ public class PopularMovieListAdapter extends RecyclerView.Adapter<PopularMovieLi
             moviedate = itemView.findViewById(R.id.movieDate);
             moviestatus = itemView.findViewById(R.id.moiewStatus);
             movieparent = itemView.findViewById(R.id.movieparent);
+            movieparent.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()){
+                case R.id.movieparent:
+                    movielistInterfaces.onClicked(getAdapterPosition());
+                    break;
+            }
         }
     }
 
-    public static String convertDate(String objDate){
-        SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        Date date;
-        try {
-            date = fmt.parse(objDate);
-            SimpleDateFormat format_day = new SimpleDateFormat("dd",Locale.getDefault());
-            SimpleDateFormat format_year = new SimpleDateFormat(" MMMM yyyy",Locale.getDefault());
-            String day=format_day.format(date);
-            String suffix=getDayOfMonthSuffix(Integer.parseInt(day));
-            String rem_Date=format_year.format(date);
-            return day+suffix+" "+rem_Date;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return "";
-    }
 
 
-    private static String getDayOfMonthSuffix(final int n) {
-        if (n >= 11 && n <= 13) {
-            return "th";
-        }
-        switch (n % 10) {
-            case 1:  return "st";
-            case 2:  return "nd";
-            case 3:  return "rd";
-            default: return "th";
-        }
-    }
+
 }

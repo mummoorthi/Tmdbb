@@ -1,4 +1,4 @@
-package moorthy.example.com.tmdb.Model;
+package moorthy.example.com.tmdb.Movielist;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

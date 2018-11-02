@@ -23,13 +23,6 @@ public class Init_Retrofit {
         return retrofit.create(apiI_Interfaces.class);
     }
 
-    public static Boolean isNetworkAvailable(Activity objActref) {
-        ConnectivityManager conMgr =  (ConnectivityManager)objActref.getSystemService(Context.CONNECTIVITY_SERVICE);
-        objActref.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (conMgr!=null){
-            NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
-            return netInfo != null;
-        }
-        return false;
-    }
+
+
 }
