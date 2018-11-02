@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="moorthy.example.com.tmdb.popular_movies_screen">
+    tools:context="moorthy.example.com.tmdb.PopularMovieScreen">
 
 
     <android.support.v7.widget.Toolbar

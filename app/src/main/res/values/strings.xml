@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Tmdb</string>
     <string name="api_key">ef5be500d6154f2bbd3750dbb0ea31a5</string>
+    <string name="descriptions">descriptions</string>
+    <string name="movietitle">MovieTitle</string>
 
 </resources>

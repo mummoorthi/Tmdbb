@@ -3,6 +3,7 @@ package moorthy.example.com.tmdb.Api_service;
 import java.util.Map;
 import java.util.Map;
 
+import moorthy.example.com.tmdb.Model.MovieListExample;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -16,5 +17,6 @@ import retrofit2.http.QueryMap;
 public interface apiI_Interfaces {
 
     @GET("discover/movie")
-    Call<ResponseBody> getMoviesList(@QueryMap Map<String, Object> options);
+    Call<MovieListExample> getMoviesList(@QueryMap Map<String, Object> options);
+
 }
